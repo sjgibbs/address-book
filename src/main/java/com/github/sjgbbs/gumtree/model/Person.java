@@ -1,6 +1,8 @@
 package com.github.sjgbbs.gumtree.model;
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.temporal.Temporal;
 
 /**
  * Person
@@ -11,7 +13,6 @@ public class Person {
 	private GeneticGender geneticGender;
 	private String fullName;
 	private LocalDate dateOfBirth;
-	private int age;
 
 	public GeneticGender getGeneticGender() {
 		return geneticGender;
@@ -37,13 +38,6 @@ public class Person {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -52,7 +46,6 @@ public class Person {
 
 		Person person = (Person) o;
 
-		if (age != person.age) return false;
 		if (!dateOfBirth.equals(person.dateOfBirth)) return false;
 		if (!fullName.equals(person.fullName)) return false;
 		if (geneticGender != person.geneticGender) return false;
@@ -65,7 +58,6 @@ public class Person {
 		int result = geneticGender.hashCode();
 		result = 31 * result + fullName.hashCode();
 		result = 31 * result + dateOfBirth.hashCode();
-		result = 31 * result + age;
 		return result;
 	}
 
@@ -78,7 +70,12 @@ public class Person {
 	 * @param olderOther another individual
 	 * @return the number of days the older person is older. Negative if the older person is actually younger.
 	 */
-	public int ageDifferenceInDays(Person olderOther) {
-		return olderOther.dateOfBirth.until(this.dateOfBirth).getDays();
+	public long ageDifferenceInDays(Person olderOther) {
+
+    Temporal olderDobAsInstant = olderOther.dateOfBirth.atStartOfDay();
+    Temporal youngerDobAsInstant = this.dateOfBirth.atStartOfDay();
+
+    return Duration.between(olderDobAsInstant, youngerDobAsInstant).toDays();
+
 	}
 }

@@ -46,13 +46,6 @@ public class PersonLineParserTest {
 	}
 
 	@Test
-	public void shouldParseAnAge() {
-		Person result = parseAnExample(Examples.SAV);
-		assertThat(result.getAge(), is(27));
-	}
-
-
-	@Test
 	public void shouldParseADob() {
 		Person result = parseAnExample(Examples.SAV);
 
@@ -84,7 +77,7 @@ public class PersonLineParserTest {
 	}
 
 	@Test
-	public void shouldCalculateQuestion3WithAnswerMatchingManualCalculation() {
+	public void shouldCalculateAgeDifferenceInDays() {
 		// 3. How many days older is Jeff Briton than Tom Soyer?
 
 		Person jeff = parseAnExample(Examples.JEFF);
@@ -98,19 +91,31 @@ public class PersonLineParserTest {
 
 		// see also http://www.timeanddate.com/calendar/?year=1977&country=9
 
-		assertThat(tom.ageDifferenceInDays(jeff),is(30));
+		assertThat(tom.ageDifferenceInDays(jeff),is(30L));
 
 	}
 
 	@Test
-	public void shouldCalculateTheInverseOfQuestion3WithANegativeResult() {
+	public void shouldCalculateAgeDifferenceInDaysWithArgumentsReversed() {
 		// This should do /something/ sensible.
 
 		Person jeff = parseAnExample(Examples.JEFF);
 		Person tom = parseAnExample(Examples.TOM);
 
-		assertThat(jeff.ageDifferenceInDays(tom),is(-30));
+		assertThat(jeff.ageDifferenceInDays(tom),is(-30L));
 
 	}
+
+  @Test
+  public void shouldCalculateAgeDifferenceInDaysLargeGap() {
+    // This should do /something/ sensible.
+
+    Person jeff = parseAnExample(Examples.JEFF);   // 16/03/77
+    Person suzie = parseAnExample(Examples.SUZIE);   // 17/08/81
+
+    assertThat(suzie.ageDifferenceInDays(jeff),is(1615L));
+
+  }
+
 
 }
