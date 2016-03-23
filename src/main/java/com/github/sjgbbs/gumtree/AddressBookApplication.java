@@ -48,9 +48,12 @@ public class AddressBookApplication {
 			Person bill = findPerson(people,"Bill McKnight");
 			Person paul = findPerson(people,"Paul Robinson");
 
-			// 3. How many days older is Jeff Briton than Tom Soyer?
-			System.out.printf("%s is %d days older than %s", bill.getFullName(), paul.ageDifferenceInDays(bill), paul.getFullName());
+			// 3. How many days older is X than Y?
+      long difference = paul.ageDifferenceInDays(bill);
+			System.out.printf("%s is %d days older than %s", bill.getFullName(), difference, paul.getFullName());
 			System.out.println();
+      System.out.printf("(about %d years)", (int) Math.round(difference / 365.25));
+      System.out.println();
 
 
 		} catch (ReaderException re) {
