@@ -14,11 +14,11 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 /**
- * PersonTest
+ * PersonLineParserTest
  *
  * @author Simon
  */
-public class PersonTest {
+public class PersonLineParserTest {
 
 	public static final LocalDate BASE_DATE = LocalDate.of(2016, 01, 26);
 
