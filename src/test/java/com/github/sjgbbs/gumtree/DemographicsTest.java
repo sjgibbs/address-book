@@ -44,14 +44,4 @@ public class DemographicsTest {
 		assertThat(histogram.get(GeneticGender.FEMALE),is(1L));
 	}
 
-	@Test
-	public void shouldReportAverageAgeBasedOnWholeYearsMatchingManualCalculation() {
-		Demographics demographics = new Demographics(people);
-
-		double result = demographics.averageAge(PersonLineParserTest.BASE_DATE);
-
-		assertThat(result,is(36.4d));
-	}
-
-
 }

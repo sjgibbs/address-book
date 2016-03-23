@@ -42,9 +42,6 @@ public class AddressBookApplication {
 			System.out.printf("%d were male", demographics.genderHistogram().get(GeneticGender.MALE));
 			System.out.println();
 
-			System.out.printf("average age was %.2f ", demographics.averageAge(LocalDate.now()));
-			System.out.println();
-
 			Person bill = findPerson(people,"Bill McKnight");
 			Person paul = findPerson(people,"Paul Robinson");
 

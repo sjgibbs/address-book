@@ -39,16 +39,5 @@ public class Demographics {
 		return histogram;
 	}
 
-	public double averageAge(LocalDate asAt) {
-
-		int totalAge = 0;
-		for(Person person : individuals) {
-			totalAge += person.calculateAgeInWholeYears(asAt);
-		}
-
-		return totalAge / ((double) individuals.size());
-
-	}
-
 
 }
