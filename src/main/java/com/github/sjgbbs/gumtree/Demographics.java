@@ -3,7 +3,6 @@ package com.github.sjgbbs.gumtree;
 import com.github.sjgbbs.gumtree.model.GeneticGender;
 import com.github.sjgbbs.gumtree.model.Person;
 
-import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -40,4 +39,12 @@ public class Demographics {
 	}
 
 
+  public Person findOldestIndividual() {
+
+    return individuals.stream()
+        .sorted((a, b) -> a.getDateOfBirth().compareTo(b.getDateOfBirth()))
+        .findFirst()
+        .orElse(null);
+
+  }
 }

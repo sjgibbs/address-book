@@ -44,4 +44,13 @@ public class DemographicsTest {
 		assertThat(histogram.get(GeneticGender.FEMALE),is(1L));
 	}
 
+  @Test
+  public void shouldReportOldestPerson() {
+    Demographics demographics = new Demographics(people);
+
+    Person jeff = demographics.findOldestIndividual();
+
+    assertThat(jeff.getFullName(),is("Jeff Briton"));
+  }
+
 }
