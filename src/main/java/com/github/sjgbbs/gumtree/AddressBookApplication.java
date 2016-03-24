@@ -30,26 +30,26 @@ public class AddressBookApplication {
 
 		try {
 			bufferedReader = new BufferedReader(new FileReader(file));
-      Set<Person> people = reader.readAll(bufferedReader, false);
+			Set<Person> people = reader.readAll(bufferedReader, false);
 
 			System.out.printf("loaded %d people", people.size());
 			System.out.println();
 
-      // 1. How many males
+			// 1. How many males
 
 			Demographics demographics = new Demographics(people);
 
-      reportNumberOfMales(demographics);
-      System.out.println();
+			reportNumberOfMales(demographics);
+			System.out.println();
 
-      // 2. oldest person
-      reportOldestPerson(demographics);
-      System.out.println();
+			// 2. oldest person
+			reportOldestPerson(demographics);
+			System.out.println();
 
-      // 3. How many days older is X than Y?
+			// 3. How many days older is X than Y?
 
-      reportAgeDifferenceOfArbitraryPair(people);
-      System.out.println();
+			reportAgeDifferenceOfArbitraryPair(people);
+			System.out.println();
 
 
 		} catch (ReaderException re) {
@@ -71,26 +71,26 @@ public class AddressBookApplication {
 
 	}
 
-  private static void reportAgeDifferenceOfArbitraryPair(Set<Person> people) {
-    Person bill = findPerson(people,"Bill McKnight");
-    Person paul = findPerson(people,"Paul Robinson");
+	private static void reportAgeDifferenceOfArbitraryPair(Set<Person> people) {
+		Person bill = findPerson(people,"Bill McKnight");
+		Person paul = findPerson(people,"Paul Robinson");
 
-    long difference = paul.ageDifferenceInDays(bill);
-    System.out.printf("%s is %d days older than %s", bill.getFullName(), difference, paul.getFullName());
-    System.out.println();
-    System.out.printf("(about %d years)", (int) Math.round(difference / 365.25));
-  }
+		long difference = paul.ageDifferenceInDays(bill);
+		System.out.printf("%s is %d days older than %s", bill.getFullName(), difference, paul.getFullName());
+		System.out.println();
+		System.out.printf("(about %d years)", (int) Math.round(difference / 365.25));
+	}
 
-  private static void reportOldestPerson(Demographics demographics) {
-    Person oldestPerson = demographics.findOldestIndividual();
-    System.out.printf("The oldest person is: %s", oldestPerson.getFullName());
-  }
+	private static void reportOldestPerson(Demographics demographics) {
+		Person oldestPerson = demographics.findOldestIndividual();
+		System.out.printf("The oldest person is: %s", oldestPerson.getFullName());
+	}
 
-  private static void reportNumberOfMales(Demographics demographics) {
-    System.out.printf("%d were male", demographics.genderHistogram().get(GeneticGender.MALE));
-  }
+	private static void reportNumberOfMales(Demographics demographics) {
+		System.out.printf("%d were male", demographics.genderHistogram().get(GeneticGender.MALE));
+	}
 
-  private static Person findPerson(Set<Person> people, String fullName) {
+	private static Person findPerson(Set<Person> people, String fullName) {
 		for(Person person : people) {
 			if(person.getFullName().equals(fullName)) {
 				return person;

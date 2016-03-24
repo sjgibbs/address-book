@@ -106,16 +106,14 @@ public class PersonLineParserTest {
 
 	}
 
-  @Test
-  public void shouldCalculateAgeDifferenceInDaysLargeGap() {
-    // This should do /something/ sensible.
+	@Test
+	public void shouldCalculateAgeDifferenceInDaysWithGapOfMultipleYears() {
+		Person jeff = parseAnExample(Examples.JEFF);   // 16/03/77
+		Person suzie = parseAnExample(Examples.SUZIE);   // 17/08/81
 
-    Person jeff = parseAnExample(Examples.JEFF);   // 16/03/77
-    Person suzie = parseAnExample(Examples.SUZIE);   // 17/08/81
+		assertThat(suzie.ageDifferenceInDays(jeff),is(1615L));
 
-    assertThat(suzie.ageDifferenceInDays(jeff),is(1615L));
-
-  }
+	}
 
 
 }

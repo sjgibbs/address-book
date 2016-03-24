@@ -39,12 +39,12 @@ public class Demographics {
 	}
 
 
-  public Person findOldestIndividual() {
+	public Person findOldestIndividual() {
 
-    return individuals.stream()
-        .sorted((a, b) -> a.getDateOfBirth().compareTo(b.getDateOfBirth()))
-        .findFirst()
-        .orElse(null);
+		return individuals.stream()
+				.sorted((a, b) -> a.getDateOfBirth().compareTo(b.getDateOfBirth()))
+				.findFirst()
+				.orElse(null);
 
-  }
+	}
 }

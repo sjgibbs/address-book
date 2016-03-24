@@ -42,11 +42,11 @@ public class PersonLineParser implements PersonParser {
 	}
 
 	private LocalDate parseDob(String fieldValue) {
-    DateTimeFormatter ddMMyyFormatter = new DateTimeFormatterBuilder()
-        .appendPattern("dd/MM")
-        .appendLiteral('/')
-        .appendValueReduced(ChronoField.YEAR,2,2,1936)
-        .toFormatter();
+		DateTimeFormatter ddMMyyFormatter = new DateTimeFormatterBuilder()
+				.appendPattern("dd/MM")
+				.appendLiteral('/')
+				.appendValueReduced(ChronoField.YEAR,2,2,1936)
+				.toFormatter();
 		return LocalDate.parse(fieldValue,ddMMyyFormatter);
 	}
 }
